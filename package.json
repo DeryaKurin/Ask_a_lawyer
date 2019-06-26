@@ -1,0 +1,19 @@
+{
+  "name": "ask_a_lawyer",
+  "version": "1.0.0",
+  "description": "A platform for users to get legal advice and for solicitors to share their knowledge",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test&& jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeryaKurin/Ask_a_lawyer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeryaKurin/Ask_a_lawyer/issues"
+  },
+  "homepage": "https://github.com/DeryaKurin/Ask_a_lawyer#readme"
+}
