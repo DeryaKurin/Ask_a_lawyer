@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./partials/head.ejs %>
+  </head>
+  <body>
+
+      <!-- Navigation -->
+       <% include ./partials/navbar.ejs %>
+
+      <!-- Page Content -->
+      <main class="container">
+
+        <!-- Jumbotron Header -->
+        <header class="jumbotron my-4">
+          <h1 class="display-3">Welcome to Ask A Lawyer</h1>
+          <p class="lead">An application for users to inquire on legal cases, to get professional legal support.</p>
+          <p class="lead">Are you a lawyer? Join our platform to share your knowledge, provide legal support and find your next case to work on!</p>
+          <a href="#" class="btn btn-primary btn-lg">Sign up</a>
+        </header>
+
+        <!-- Page Features -->
+        <section class="row text-center">
+
+          <section class="col-lg-4">
+            <h4 class="card-title">We devided questions and answers by categories</h4>
+            <p class="card-text">You may view all the categories and review all the questions and answers posted before. Ask your own question under the relevant category!</p>
+          </section>
+
+          <section class="col-lg-4">
+            <h4 class="card-title">Send direct messages to lawyers!</h4>
+            <p class="card-text">You may send direct messages to the lawyers who answered to your question!</p>
+          </section>
+
+          <section class="col-lg-4">
+            <h4 class="card-title">Send requests</h4>
+            <p class="card-text">Satistfied with the answer? Send requests to the lawyers who you want to be your legal advisor!</p>
+          </section>
+
+        </section>
+        <!-- /.row -->
+
+      </main>
+      <!-- /.container -->
+      <% include ./partials/baseScripts.ejs %>
+
+    </body>
+</html>
