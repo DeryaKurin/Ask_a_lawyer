@@ -1,4 +1,5 @@
 const sequelize = require("../../src/db/models/index").sequelize;
+const User = require("../../src/db/models").User;
 
 describe("User", () => {
 
@@ -23,7 +24,8 @@ describe("User", () => {
         name: "Ahmet Mahmut Unlu",
         email: "ahmetmahmut@gmail.com",
         phone: "3423871",
-        password: "123456789"
+        password: "123456789",
+        role: 0
       })
       .then((user) => {
         expect(user.email).toBe("ahmetmahmut@gmail.com");
@@ -42,7 +44,8 @@ describe("User", () => {
         name: "Ahmet Mahmut Unlu",
         email: "ahmetmahmutcom",
         phone: "3423871",
-        password: "123456789"
+        password: "123456789",
+        role: 0
       })
       .then((user) => {
 
@@ -66,13 +69,17 @@ describe("User", () => {
         name: "Ahmet Mahmut Unlu",
         email: "ahmetmahmut@gmail.com",
         phone: "3423871",
-        password: "123456789"
+        password: "123456789",
+        role: 0
       })
       .then((user) => {
 
         User.create({
+          name: "Ahmet Mahmut Unlu",
           email: "ahmetmahmut@gmail.com",
-          password: "nananananananananananananananana BATMAN!"
+          phone: "3423871",
+          password: "nananananananananananananananana BATMAN!",
+          role: 0
         })
         .then((user) => {
 
