@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+
+      <% include ../static/partials/messages.ejs %>
+
+
+      <h1>Be a part of our community!</h1>
+
+      <div>
+        <div class="col-md-6">
+          <h4>Sign up to ask questions</h4>
+          <a href="/users/sign_up_enquirer" class="btn btn-warning">Be an enquirer</a>
+        </div>
+        <div class="col-md-6">
+          <h4>Sign up to provide legal advice</h4>
+          <a href="/users/sign_up_advisor" class="btn btn-warning">Be a legal advisor</a>
+        </div>
+      </div>
+
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>
