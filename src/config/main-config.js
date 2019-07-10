@@ -26,7 +26,6 @@ module.exports = {
      app.use(flash());
      passportConfig.init(app);
      app.use((req,res,next) => {
-       console.log("SETTING CURRENT USER : ", req.url);
        res.locals.currentUser = req.user;
        next();
      });
