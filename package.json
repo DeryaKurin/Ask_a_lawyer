@@ -23,7 +23,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "dotenv": "^5.0.0",
+    "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
@@ -34,11 +34,11 @@
     "mysql2": "^1.6.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg": "^7.4.1",
+    "pg": "^7.11.0",
     "pg-hstore": "^2.3.2",
     "request": "^2.88.0",
-    "sequelize": "^4.43.1",
-    "sequelize-cli": "^5.4.0",
+    "sequelize": "^6.0.0",
+    "sequelize-cli": "^5.5.0",
     "validator": "^11.1.0"
   }
 }
