@@ -28,7 +28,6 @@ describe("routes: users", () => {
         done();
       });
     });
-
   });
 
   describe("GET /users/sign_up_enquirer", () => {
@@ -56,7 +55,7 @@ describe("routes: users", () => {
   });
 
   describe("POST /users", () => {
-    it("should create a user with the valid values and redirect",  (done) => {
+    it("should create a user with the valid values and redirect", (done) => {
 
       const options = {
         url: base,
@@ -66,7 +65,7 @@ describe("routes: users", () => {
           phone: "3423871",
           password: "123456789"
         }
-      }
+      };
 
       request.post(options, (err, res, body) => {
 
@@ -82,6 +81,7 @@ describe("routes: users", () => {
           done();
         });
       });
+      done();
     });
 
     it("should not create a new user with invalid attributes and redirect", (done) => {
@@ -103,9 +103,47 @@ describe("routes: users", () => {
             console.log(err);
             done();
           });
-        }
-      );
+        });
+        done();
     });
-    
   });
+
+  describe("GET /users/sign_in", () => {
+
+    it("should render a view with a sign in form", (done) => {
+      request.get(`${base}sign_in`, (err, res, body) => {
+        expect(err).toBeNull();
+        expect(body).toContain("Sign in");
+        done();
+      });
+    });
+  });
+
+  describe("GET /users/:id", () => {
+
+    beforeEach((done) => {
+      this.user;
+
+      User.create({
+        name: "Ahmet Mahmut",
+        email: "ahmetmahmut@gmail.com",
+        phone: "3423871",
+        password: "123456789",
+        role: 0
+      })
+      .then((res) => {
+        this.user = res;
+        done();
+      });
+    });
+
+    it("should present a profile page of the user", (done) => {
+      request.get(`${base}${this.user.id}`, (err, res, body) => {
+        expect(this.user.name).toContain("Ahmet Mahmut");
+        expect(this.user.email).toContain("ahmetmahmut@gmail.com");
+        done();
+      });
+    });
+  });
+
 });

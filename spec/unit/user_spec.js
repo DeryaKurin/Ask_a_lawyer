@@ -21,7 +21,7 @@ describe("User", () => {
 
     it("should create a User object with a valid email and password", (done) => {
       User.create({
-        name: "Ahmet Mahmut Unlu",
+        name: "Ahmet Mahmut",
         email: "ahmetmahmut@gmail.com",
         phone: "3423871",
         password: "123456789",
