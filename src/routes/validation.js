@@ -12,9 +12,11 @@ module.exports = {
      const errors = req.validationErrors();
 
      if (errors) {
+       console.log("WE HAD ERRORS:");
        req.flash("error", errors);
        return res.redirect(303, req.headers.referer);
      } else {
+       console.log("NO ERRORS MOVING ON");
        return next();
      }
   }

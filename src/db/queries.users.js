@@ -4,9 +4,10 @@ const bcrypt = require("bcryptjs");
 module.exports = {
 
   createUser(newUser, callback) {
+    console.log("WE ARE INSIDE QUERY USER");
     const salt = bcrypt.genSaltSync();
     const hashedPassword = bcrypt.hashSync(newUser.password, salt);
-
+    console.log("ABOUT THE CREATE USER");
     return User.create({
       name: newUser.name,
       email: newUser.email,
@@ -14,7 +15,8 @@ module.exports = {
       password: hashedPassword,
       role: newUser.role
     })
-    then((user) => {
+    .then((user) => {
+      console.log("DONE CREATING CALLING BACK");
       callback(null, user);
     })
     .catch((err) => {

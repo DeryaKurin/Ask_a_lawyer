@@ -17,6 +17,7 @@ module.exports = {
   },
 
   createUser(req, res, next) {
+    console.log("WE ARE INSIDE NEW USER");
     let newUser = {
       name: req.body.name,
       email: req.body.email,
@@ -27,6 +28,7 @@ module.exports = {
     };
 
     userQueries.createUser(newUser, (err, user) => {
+      console.log("CREATING USER");
       if(err) {
         req.flash("error", err);
         res.redirect("/users/sign_up");
