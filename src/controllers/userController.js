@@ -1,4 +1,3 @@
-// const User = require("../db/models/").User;
 const userQueries = require("../db/queries.users.js");
 const passport = require("passport");
 
@@ -32,10 +31,10 @@ module.exports = {
         req.flash("error", err);
         res.redirect("/users/sign_up");
       } else {
-        passport.authenticate("local")(req, res, () => {
-          req.flash("notice", "You've successfully signed in!");
-          res.redirect("/");
-        });
+        passport.authenticate('local')(req, res, () => {
+            req.flash("notice", "You've successfully sign in!");
+            res.redirect("/");
+        })
       }
     });
   },

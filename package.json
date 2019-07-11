@@ -18,16 +18,17 @@
   },
   "homepage": "https://github.com/DeryaKurin/Ask_a_lawyer#readme",
   "devDependencies": {
-    "jasmine": "^3.0.0"
+    "jasmine": "^3.0.0",
+    "request": "^2.83.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
-    "express": "^4.17.1",
+    "express": "^4.16.4",
     "express-flash": "0.0.2",
-    "express-session": "^1.16.2",
+    "express-session": "^1.15.6",
     "express-validator": "^5.0.2",
     "morgan": "^1.9.1",
     "mysql": "^2.17.1",
@@ -36,7 +37,6 @@
     "passport-local": "^1.0.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
-    "request": "^2.88.0",
     "sequelize": "^4.32.6",
     "sequelize-cli": "^5.5.0",
     "validator": "^11.1.0"
