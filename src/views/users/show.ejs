@@ -11,11 +11,19 @@
 
       <% include ../static/partials/messages.ejs %>
 
- <!-- #1 -->
-      
-
       <hr>
-
+      <h1><%= `${user.name}'s profile` %></h1>
+      <p><%= `Email: ${user.name}` %></p>
+      <p><%= `Phone: ${user.phone}` %></p>
+      <p> User role:
+        <% if (user.role == 0) { %>
+          Enquirer
+        <% } else if (user.role == 1) { %>
+          Legal Advisor
+        <% } else if (user.role == 2) { %>
+          Admin
+        <% } %>
+      </p>
 
     </main>
 
