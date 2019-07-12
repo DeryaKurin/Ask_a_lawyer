@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <main class="container">
+      <% include ../static/partials/navbar.ejs %>
+      <br>
+      <h1>Categories</h1
+      <br>
+
+      <ul class="list-group">
+
+        <% categories.forEach((category) => { %>
+
+          <li class="list-group-item">
+            <a href="/categories/<%= category.id %>"> <%= category.title %> </a>
+          </li>
+
+        <% }) %>
+      </ul>
+
+      <hr>
+
+      <a href="/categories/new" class="btn btn-warning">Add Category</a>
+
+    </main>
+  </body>

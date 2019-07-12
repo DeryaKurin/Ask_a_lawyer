@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+      <h1><%= category.title %></h1>
+
+      <p><%= category.description %></p>
+
+      <form style="display:initial" action="/categories/<%= category.id %>/destroy" method="post">
+         <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+
+      <a href="/categories/<%= category.id %>/edit" class="btn btn-warning">Edit</a>
+    </main>
+
+
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>
