@@ -18,8 +18,9 @@
   },
   "homepage": "https://github.com/DeryaKurin/Ask_a_lawyer#readme",
   "devDependencies": {
-    "jasmine": "^3.0.0",
-    "request": "^2.83.0"
+    "faker": "^4.1.0",
+    "jasmine": "^3.4.0",
+    "request": "^2.88.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

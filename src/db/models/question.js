@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE"
     });
 
-    Question.belongsTo(models.User, {
-      foreignKey: "userId",
-      onDelete: "CASCADE"
-    });
+    // Question.belongsTo(models.User, {
+    //   foreignKey: "userId",
+    //   onDelete: "CASCADE"
+    // });
   };
   return Question;
 };

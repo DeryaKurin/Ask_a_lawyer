@@ -1,4 +1,5 @@
 const Category = require("./models").Category;
+const Question = require("./models").Question;
 
 module.exports = {
   getAllCategories(callback) {
@@ -7,6 +8,24 @@ module.exports = {
       callback(null, categories);
     })
     .catch((err) => {
+      callback(err);
+    })
+  },
+
+  getCategory(id, callback) {
+
+    return Category.findById(id, {
+      include: [{
+        model: Question,
+        as: "questions"
+      }]
+    })
+    .then((category) => {
+      console.log("WE ARE IN GET CATEGORY QUERY METHOD");
+      callback(null, category);
+    })
+    .catch((err) => {
+      console.log("ERROR OCCURED IN Category QUERY get Category");
       callback(err);
     })
   },
@@ -22,16 +41,6 @@ module.exports = {
     .catch((err) => {
       callback(err);
     });
-  },
-
-  getCategory(id, callback) {
-    return Category.findById(id)
-    .then((category) => {
-      callback(null, category);
-    })
-    .catch((err) => {
-      callback(err);
-    })
   },
 
   deleteCategory(id, callback) {

@@ -11,11 +11,25 @@
 
       <p><%= category.description %></p>
 
+      <hr>
+
+      <h1>Questions</h1>
+
+      <ul class="list-group">
+        <% category.questions.forEach((question) => { %>
+          <li class="list-group-item">
+            <a href="/categories/<%= category.id %>/questions/<%= question.id %>"> <%= question.subject %> </a>
+            <p><%= question.body %></p>
+          </li>
+        <% }) %>
+      </ul>
+
       <form style="display:initial" action="/categories/<%= category.id %>/destroy" method="post">
          <button type="submit" class="btn btn-danger">Delete</button>
       </form>
 
       <a href="/categories/<%= category.id %>/edit" class="btn btn-warning">Edit</a>
+      <a href="/categories/<%= category.id %>/questions/new" class="btn btn-success">New Question</a>
     </main>
 
 
