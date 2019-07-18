@@ -19,5 +19,22 @@ module.exports = {
        console.log("NO ERRORS MOVING ON");
        return next();
      }
+  },
+
+  validateQuestions(req, res, next) {
+    if(req.method === "POST") {
+      req.checkParams("categoryId", "must be valid").notEmpty().isInt();
+      req.checkBody("subject", "must be at least 2 characters in length").isLength({min: 2});
+      req.checkBody("body", "must be at least 10 characters in length").isLength({min: 10});
+    }
+
+    const errors = req.validationErrors();
+
+    if(errors) {
+      req.flash("error", errors);
+      return res.redirect(303, req.headers.referer)
+    } else {
+      return next();
+    }
   }
 }

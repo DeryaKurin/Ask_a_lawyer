@@ -52,9 +52,6 @@ describe("routes : questions", () => {
   });
 
 
-
-// });
-
   describe("POST /categories/:categoryId/questions/create", () => {
 
     it("should create a new question and redirect", (done) => {
@@ -82,30 +79,35 @@ describe("routes : questions", () => {
       });
 
     });
+
+
+    it("should not create a new question that fails validation", (done) => {
+      const options = {
+        url: `${base}${this.category.id}/questions/create`,
+        form: {
+          subject: "a",
+          body: "b"
+        }
+      };
+
+
+
+      request.post(options, (err, res, body) => {
+
+      Question.findOne({ where: { subject: "a"}})
+      .then((question) => {
+        expect(question).toBeNull();
+        done();
+      })
+      .catch((err) => {
+        console.log(err);
+        done();
+      });
+     });
+   });
+
   });
-  //
-  //   it("should not create a new question that fails validation", (done) => {
-  //     url: `${base}${this.category.id}/questions/create`,
-  //     form: {
-  //       subject: "a",
-  //       body: "b"
-  //     }
-  //   };
-  //
-  //   request.post(options, (err, res, body) => {
-  //
-  //     Question.findOne({ where: { subject: "a"}})
-  //     .then((question) => {
-  //       expect(question).toBeNull();
-  //       done();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       done();
-  //     });
-  //   });
-  // });
-  //
+
   describe("GET /categories/:categoryId/questions/:id", () => {
 
     it("should render a view with the selected question", (done) => {

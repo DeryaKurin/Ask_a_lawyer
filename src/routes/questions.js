@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const questionController = require("../controllers/questionController");
+const validation = require("./validation");
 
 router.get("/categories/:categoryId/questions/new", questionController.new);
 
-router.post("/categories/:categoryId/questions/create", questionController.create);
+router.post("/categories/:categoryId/questions/create", validation.validateQuestions, questionController.create);
 
 router.get("/categories/:categoryId/questions/:id", questionController.show);
 
@@ -13,6 +14,6 @@ router.post("/categories/:categoryId/questions/:id/destroy", questionController.
 
 router.get("/categories/:categoryId/questions/:id/edit", questionController.edit);
 
-router.post("/categories/:categoryId/questions/:id/update", questionController.update);
+router.post("/categories/:categoryId/questions/:id/update", validation.validateQuestions, questionController.update);
 
 module.exports = router;

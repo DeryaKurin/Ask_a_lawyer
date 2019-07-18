@@ -20,11 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "categoryId",
       onDelete: "CASCADE"
     });
-
-    // Question.belongsTo(models.User, {
-    //   foreignKey: "userId",
-    //   onDelete: "CASCADE"
-    // });
   };
   return Question;
 };
