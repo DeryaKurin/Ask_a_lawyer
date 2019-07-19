@@ -31,10 +31,13 @@ module.exports = {
     const errors = req.validationErrors();
 
     if(errors) {
+    
       req.flash("error", errors);
       return res.redirect(303, req.headers.referer)
     } else {
+      console.log("WE ARE GOOD IN VALIDATION");
       return next();
     }
   }
+
 }

@@ -34,7 +34,6 @@ module.exports = {
       if(err || !category) {
         res.redirect(404, "/");
       } else {
-        console.log("LOOK AT HERE: WE ARE IN CATEGORY CONTROLLER SHOW METHOD");
         res.render("categories/show", {category});
       }
     });

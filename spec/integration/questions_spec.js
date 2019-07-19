@@ -5,38 +5,51 @@ const sequelize = require("../../src/db/models/index").sequelize;
 
 const Category = require("../../src/db/models").Category;
 const Question = require("../../src/db/models").Question;
+const User = require("../../src/db/models").User;
+
 
 describe("routes : questions", () => {
 
   beforeEach((done) => {
     this.category;
     this.question;
+    this.user;
 
     sequelize.sync({force: true}).then((res) => {
 
-      Category.create({
-        title: "Property Law",
-        description: "Property law is the area of law that governs the various forms of ownership and tenancy in real property (land as distinct from personal or movable possessions) and in personal property, within the common law legal system."
+      User.create({
+        name: "Ahmet Mahmut",
+        email: "ahmetmahmut@gmail.com",
+        phone: "3423871",
+        password: "123456789",
+        role: 0
       })
-      .then((category) => {
-        this.category = category;
+      .then((user) => {
+        this.user = user;
 
-        Question.create({
-          subject:"Company sale",
-          body: "What options do I have when the co-owner has not paid his share of company.",
-          categoryId: this.category.id
+        Category.create({
+          title: "Property Law",
+          description: "Property law is the area of law that governs the various forms of ownership and tenancy in real property (land as distinct from personal or movable possessions) and in personal property, within the common law legal system.",
+
+          questions: [{
+            subject:"Company sale",
+            body: "What options do I have when the co-owner has not paid his share of company.",
+            userId: this.user.id
+          }]
+        }, {
+          include: {
+            model: Question,
+            as: "questions"
+          }
         })
-        .then((question) => {
-          this.question = question;
-          done();
-        })
-        .catch((err) => {
-          console.log(err);
+        .then((category) => {
+          this.category = category;
+          this.question = category.questions[0];
           done();
         });
      });
-    });
   });
+});
 
   describe("GET /categories/:categoryId/questions/new", () => {
 
@@ -61,7 +74,8 @@ describe("routes : questions", () => {
         form: {
           subject: "House Sale",
           body: "What options do I have when the co-owner has paid his share of company.",
-          categoryId: this.category.id
+          categoryId: this.category.id,
+          userId: this.user.id
         }
       };
 

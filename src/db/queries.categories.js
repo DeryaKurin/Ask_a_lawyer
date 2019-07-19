@@ -1,5 +1,6 @@
 const Category = require("./models").Category;
 const Question = require("./models").Question;
+const User = require("./models").User;
 
 module.exports = {
   getAllCategories(callback) {
@@ -21,11 +22,9 @@ module.exports = {
       }]
     })
     .then((category) => {
-      console.log("WE ARE IN GET CATEGORY QUERY METHOD");
       callback(null, category);
     })
     .catch((err) => {
-      console.log("ERROR OCCURED IN Category QUERY get Category");
       callback(err);
     })
   },

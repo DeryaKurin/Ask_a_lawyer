@@ -1,13 +1,17 @@
 const Category = require("./models").Category;
 const Question = require("./models").Question;
+const User = require("./models").User;
 
 module.exports = {
   addQuestion(newQuestion, callback){
+    console.log("WE HAVE ENTERED THE QUESTION QUERY");
     return Question.create(newQuestion)
     .then((question) => {
+      console.log("WE CREATED A QUESTION IN QUERIES");
       callback(null, question);
     })
     .catch((err) => {
+      console.log("ERROR IN QUERIES CREATE");
       callback(err);
     })
   },
@@ -15,12 +19,10 @@ module.exports = {
   getQuestion(id, callback) {
     return Question.findById(id)
     .then((question) => {
-      console.log(question);
-      console.log("WE ARE IN GET QUESTION QUERIES");
+      
       callback(null, question);
     })
     .catch((err) => {
-      console.log("THERE IS AN ERROR IN QUERIES GET QUESTION");
       callback(err);
     });
   },
@@ -31,11 +33,9 @@ module.exports = {
       question.destroy()
       .then((res) => {
         callback(null, question);
-        console.log("WE ARE IN QUERIES DELETE QUESTION RESPONSE");
       })
     })
     .catch((err) => {
-      console.log("ERROR IN QUERIES DELETE QUESTION");
       callback(err);
     });
   },
@@ -52,7 +52,7 @@ module.exports = {
       })
       .then(() => {
         callback(null, question);
-      })  
+      })
     })
     .catch((err) => {
       callback(err);

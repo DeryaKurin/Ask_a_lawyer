@@ -1,40 +1,54 @@
 const sequelize = require("../../src/db/models/index").sequelize;
 const Category = require("../../src/db/models").Category;
 const Question = require("../../src/db/models").Question;
+const User = require("../../src/db/models").User;
 
 describe("Category", () => {
 
   beforeEach((done) => {
+       this.category;
+       this.question;
+       this.user;
 
-    this.category;
-    this.question;
+       sequelize.sync({force: true}).then((res) => {
 
-    sequelize.sync({force: true}).then((res) => {
 
-      Category.create({
-        title: "Property Law",
-        description: "Property law is the area of law that governs the various forms of ownership and tenancy in real property."
-      })
-      .then((category) => {
-        this.category = category;
+         User.create({
+           name: "Ahmet Mahmut",
+           email: "ahmetmahmut@gmail.com",
+           phone: "3423871",
+           password: "123456789",
+           role: 0
+         })
+         .then((user) => {
+           this.user = user; //store the user
 
-        Question.create({
-          subject:"House sale",
-          body: "What options do I have when the co-owner has not paid his share of mortgage.",
-          categoryId: this.category.id
-        })
-        .then((question) => {
-          this.question = question;
-          done();
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-          done();
-        });
 
-    });
-  });
+           Category.create({
+             title: "Property Law",
+             description: "Property law is the area of law that governs the various forms of ownership and tenancy in real property.",
+
+
+             questions: [{
+               subject:"House sale",
+               body: "What options do I have when the co-owner has not paid his share of mortgage.",
+               userId: this.user.id
+             }]
+           }, {
+
+             include: {
+               model: Question,
+               as: "questions"
+             }
+           })
+           .then((category) => {
+             this.category = category; //store the topic
+             this.question = category.questions[0]; //store the post
+             done();
+           })
+         })
+       });
+     });
 
   describe("#create()", () => {
 
@@ -73,7 +87,7 @@ describe("Category", () => {
 
   describe("#getQuestions", () => {
 
-    it("should return the associated posts", (done) => {
+    it("should return the associated questions", (done) => {
 
       this.category.getQuestions()
       .then((associatedQuestions) => {

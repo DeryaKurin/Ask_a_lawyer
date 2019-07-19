@@ -6,7 +6,11 @@
   <body>
     <% include ../static/partials/navbar.ejs %>
 
+
+
     <main class="container">
+      <% include ../static/partials/messages.ejs %>
+
       <h1>New Question</h1>
 
       <form action="/categories/<%= categoryId %>/questions/create" method="post">

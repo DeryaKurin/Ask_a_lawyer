@@ -29,7 +29,11 @@
       </form>
 
       <a href="/categories/<%= category.id %>/edit" class="btn btn-warning">Edit</a>
+      <% if(currentUser) { %>
+
       <a href="/categories/<%= category.id %>/questions/new" class="btn btn-success">New Question</a>
+      <% } %>
+
     </main>
 
 

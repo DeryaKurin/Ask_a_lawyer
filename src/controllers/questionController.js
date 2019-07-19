@@ -12,13 +12,17 @@ module.exports = {
     let newQuestion = {
       subject: req.body.subject,
       body: req.body.body,
-      categoryId: req.params.categoryId
+      categoryId: req.params.categoryId,
+      userId: req.user.id
     };
 
     questionQueries.addQuestion(newQuestion, (err, question) => {
       if(err) {
+        console.log("ERROR HAPPENED IN CREATE callback" + err);
         res.redirect(500, "/questions/new");
       } else {
+        console.log("WE ARE IN QUESTION CONTROLLER CREATE");
+        console.log(newQuestion);
         res.redirect(303, `/categories/${newQuestion.categoryId}`);
       }
     });
